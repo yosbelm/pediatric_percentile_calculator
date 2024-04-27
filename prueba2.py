@@ -10,12 +10,14 @@ class PercentileFinder:
     def find_percentile(self, edad, peso):
         fila = min(edad, len(self.tabla_percentiles) - 1)  # Encontrar la fila correspondiente a la edad
 
-        for i, p in enumerate(self.percentiles):
+        for p in self.percentiles:
             if peso <= self.tabla_percentiles.loc[fila, p]:
                 return p
         return 97  # Si el peso excede el valor más alto de la tabla, se asume el percentil 97
 
 def main(page: Page):
+    page.vertical_alignment = flet.MainAxisAlignment.CENTER
+    page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
     tabla_percentiles = pd.DataFrame([
         [2.8,  3.2,  3.6,  4.1,  4.9,  5.6,  6.6],
     [3.5,  4.1,  4.5,  5.2,  5.9,  6.6,  7.7],
