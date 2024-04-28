@@ -1,5 +1,5 @@
 import flet
-from flet import Text, TextField, ElevatedButton, Page
+from flet import Text, TextField, ElevatedButton, Page, Dropdown, dropdown
 import pandas as pd
 
 class PercentileFinder:
@@ -11,7 +11,7 @@ class PercentileFinder:
         fila = min(edad, len(self.tabla_percentiles) - 1)  # Encontrar la fila correspondiente a la edad
 
         for p in self.percentiles:
-            if peso <= self.tabla_percentiles.loc[fila, p]:
+            if peso < self.tabla_percentiles.loc[fila, p]:
                 return p
         return 97  # Si el peso excede el valor más alto de la tabla, se asume el percentil 97
 
@@ -22,7 +22,7 @@ def main(page: Page):
     page.window_width = 390
     page.window_height = 644
     
-    tabla_percentiles = pd.DataFrame([
+    tabla_percentiles_boys = pd.DataFrame([
         [2.8,  3.2,  3.6,  4.1,  4.9,  5.6,  6.6],
     [3.5,  4.1,  4.5,  5.2,  5.9,  6.6,  7.7],
     [4.2,  4.8,  5.3,  6.0,  6.7,  7.4,  8.5],
@@ -47,6 +47,43 @@ def main(page: Page):
 [9.2,  9.9,  10.8,  11.6,  12.6,  13.5,  14.6],
 [9.3,  10.0,  10.9,  11.8,  12.7,  13.7,  14.8],
 [9.4,  10.1,  11.1,  11.9,  12.9,  13.9,  15.0]], columns=[3, 10, 25, 50, 75, 90, 97])
+    
+    tabla_percentiles_girls = pd.DataFrame([ 
+[2.8, 3.2, 3.6, 4.1, 4.7, 5.2, 6.1],
+ [3.4, 3.9, 4.3, 4.9, 5.4, 6.0, 6.9],
+ [3.9, 4.5, 5.0, 5.7, 6.2, 6.7, 7.6],
+ [4.4, 5.0, 5.6, 6.3, 6.8, 7.4, 8.3],
+ [4.8, 5.5, 6.1, 6.8, 7.4, 8.1, 9.0],
+ [5.2, 5.9, 6.5, 7.3, 7.9, 8.7, 9.7],
+ [5.6, 6.3, 6.9, 7.7, 8.4, 9.2, 10.2],
+ [5.9, 6.7, 7.4, 8.0, 8.8, 9.6, 10.6],
+[6.2, 7.0, 7.7, 8.3, 9.1, 9.9, 11.0],
+ [6.5, 7.3, 7.9, 8.6, 9.4, 10.2, 11.4],
+ [6.7, 7.5, 8.1, 8.8, 9.7, 10.5, 11.7],
+ [7.0, 7.7, 8.3, 9.0, 9.9, 10.8, 11.9],
+ [7.2, 7.9, 8.5, 9.3, 10.1, 11.1, 12.1],
+ [7.4, 8.1, 8.7, 9.5, 10.3, 11.3, 12.3],
+ [7.7, 8.4, 9.0, 9.7, 10.6, 11.5, 12.5],
+ [7.9, 8.6, 9.2, 9.9, 10.8, 11.7, 12.7],
+ [8.1, 8.8, 9.4, 10.1, 11.0, 11.9, 12.9],
+ [8.2, 9.0, 9.6, 10.3, 11.2, 12.1, 13.1],
+ [8.3, 9.2, 9.8, 10.5, 11.4, 12.3, 13.4],
+ [8.4, 9.3, 9.9, 10.7, 11.6, 12.5, 13.6],
+ [8.5, 9.4, 10.0, 10.9, 11.8, 12.7, 13.9],
+ [8.6, 9.5, 10.1, 11.1, 12.0, 12.9, 14.1],
+ [8.7, 9.6, 10.3, 11.2, 12.2, 13.1, 14.3],
+ [8.8, 9.7, 10.4, 11.3, 12.3, 13.3, 14.5]], columns = [3, 10, 25, 50, 75, 90, 97])
+    
+    lista = Dropdown(hint_text="Cual es el sexo?",
+        width= 200, options=[
+        dropdown.Option('Girl'),
+        dropdown.Option('Boy'),
+    ])
+    
+    if lista.value == "Boy":
+        tabla_percentiles = tabla_percentiles_boys
+    else:
+        tabla_percentiles= tabla_percentiles_girls
     pf = PercentileFinder(tabla_percentiles)
 
     edad_input = TextField(label="Edad (meses):", width=290)
@@ -70,7 +107,7 @@ def main(page: Page):
     result_text = Text(value="")
     
     
-    page.add(
+    page.add(lista,
         edad_input, 
         peso_input, 
         boton, 
