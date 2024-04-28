@@ -65,14 +65,14 @@ def main(page: Page):
             result_text.value = f'El bebé se encuentra en el percentil 3 de peso para su edad.'
         page.update()
         
-    Boton = ElevatedButton(text="Encontrar percentil", on_click=on_find_percentile_click)
+    boton = ElevatedButton(text="Encontrar percentil", on_click=on_find_percentile_click)
     result_text = Text(value="")
     
     
     page.add(
         edad_input, 
         peso_input, 
-        Boton, 
+        boton, 
         result_text)
 
 flet.app(target= main)
