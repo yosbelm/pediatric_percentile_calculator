@@ -74,10 +74,10 @@ def main(page: Page):
  [8.7, 9.6, 10.3, 11.2, 12.2, 13.1, 14.3],
  [8.8, 9.7, 10.4, 11.3, 12.3, 13.3, 14.5]], columns = [3, 10, 25, 50, 75, 90, 97])
     
-    lista = Dropdown(hint_text="Cual es el sexo?",
+    lista = Dropdown(hint_text="¿Cuál es el sexo?",
         width= 200, options=[
-        dropdown.Option('Girl'),
-        dropdown.Option('Boy'),
+        dropdown.Option('Niña'),
+        dropdown.Option('Niño'),
     ])
     
     if lista.value == "Boy":
