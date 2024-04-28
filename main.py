@@ -80,7 +80,7 @@ def main(page: Page):
         dropdown.Option('Niño'),
     ])
     
-    if lista.value == "Boy":
+    if lista.value == "Niño": 
         tabla_percentiles = tabla_percentiles_boys
     else:
         tabla_percentiles= tabla_percentiles_girls
