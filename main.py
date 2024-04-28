@@ -19,7 +19,8 @@ def main(page: Page):
     page.title = "Percentil de peso para edad"
     page.vertical_alignment = flet.MainAxisAlignment.CENTER
     page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
-    
+    page.window_width = 390
+    page.window_height = 644
     
     tabla_percentiles = pd.DataFrame([
         [2.8,  3.2,  3.6,  4.1,  4.9,  5.6,  6.6],
@@ -48,8 +49,8 @@ def main(page: Page):
 [9.4,  10.1,  11.1,  11.9,  12.9,  13.9,  15.0]], columns=[3, 10, 25, 50, 75, 90, 97])
     pf = PercentileFinder(tabla_percentiles)
 
-    edad_input = TextField(label="Edad (meses):")
-    peso_input = TextField(label="Peso (kg):")
+    edad_input = TextField(label="Edad (meses):", width=290)
+    peso_input = TextField(label="Peso (kg):", width=290)
 
     
     def on_find_percentile_click(e):
