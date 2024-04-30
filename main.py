@@ -1,28 +1,8 @@
 import flet
-from flet import Text, TextField, ElevatedButton, Page, Dropdown, dropdown
+from flet import Text, TextField, ElevatedButton, Page, Dropdown, dropdown, ControlEvent
 import pandas as pd
 
-class PercentileFinder:
-    def __init__(self, tabla_percentiles):
-        self.tabla_percentiles = tabla_percentiles
-        self.percentiles = [3, 10, 25, 50, 75, 90, 97]
-
-    def find_percentile(self, edad, peso):
-        fila = min(edad, len(self.tabla_percentiles) - 1)  # Encontrar la fila correspondiente a la edad
-
-        for p in self.percentiles:
-            if peso < self.tabla_percentiles.loc[fila, p]:
-                return p
-        return 97  # Si el peso excede el valor más alto de la tabla, se asume el percentil 97
-
-def main(page: Page):
-    page.title = "Percentil de peso para edad"
-    page.vertical_alignment = flet.MainAxisAlignment.CENTER
-    page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
-    page.window_width = 390
-    page.window_height = 644
-    
-    tabla_percentiles_boys = pd.DataFrame([
+tabla_percentiles_boys = pd.DataFrame([
         [2.8,  3.2,  3.6,  4.1,  4.9,  5.6,  6.6],
     [3.5,  4.1,  4.5,  5.2,  5.9,  6.6,  7.7],
     [4.2,  4.8,  5.3,  6.0,  6.7,  7.4,  8.5],
@@ -48,7 +28,7 @@ def main(page: Page):
 [9.3,  10.0,  10.9,  11.8,  12.7,  13.7,  14.8],
 [9.4,  10.1,  11.1,  11.9,  12.9,  13.9,  15.0]], columns=[3, 10, 25, 50, 75, 90, 97])
     
-    tabla_percentiles_girls = pd.DataFrame([ 
+tabla_percentiles_girls = pd.DataFrame([ 
 [2.8, 3.2, 3.6, 4.1, 4.7, 5.2, 6.1],
  [3.4, 3.9, 4.3, 4.9, 5.4, 6.0, 6.9],
  [3.9, 4.5, 5.0, 5.7, 6.2, 6.7, 7.6],
@@ -74,21 +54,39 @@ def main(page: Page):
  [8.7, 9.6, 10.3, 11.2, 12.2, 13.1, 14.3],
  [8.8, 9.7, 10.4, 11.3, 12.3, 13.3, 14.5]], columns = [3, 10, 25, 50, 75, 90, 97])
     
-    lista = Dropdown(hint_text="¿Cuál es el sexo?",
-        width= 200, options=[
-        dropdown.Option('Niña'),
-        dropdown.Option('Niño'),
-    ])
-    
-    if lista.value == "Niño": 
-        tabla_percentiles = tabla_percentiles_boys
-    else:
-        tabla_percentiles= tabla_percentiles_girls
-    pf = PercentileFinder(tabla_percentiles)
+class PercentileFinder:
+    def __init__(self, tabla_percentiles):
+        self.tabla_percentiles = tabla_percentiles
+        self.percentiles = [3, 10, 25, 50, 75, 90, 97]
 
+    def find_percentile(self, edad, peso):
+        fila = min(edad-1, len(self.tabla_percentiles) - 1)  # Encontrar la fila correspondiente a la edad
+
+        for p in self.percentiles:
+            if peso <= self.tabla_percentiles.loc[fila, p]:
+                return p
+        return 97  # Si el peso excede el valor más alto de la tabla, se asume el percentil 97
+
+def main(page: Page):
+    page.title = "Percentil de peso para edad"
+    page.vertical_alignment = flet.MainAxisAlignment.CENTER
+    page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
+    page.window_width = 390
+    page.window_height = 644
+    
+    
+    def sexo(e: ControlEvent):
+        if lista.value == "Boy":
+            pf.tabla_percentiles = tabla_percentiles_boys
+        elif lista.value == "Girl":
+            pf.tabla_percentiles= tabla_percentiles_girls
+        page.update()
+    
+    pf = PercentileFinder(sexo)
+           
     edad_input = TextField(label="Edad (meses):", width=290)
     peso_input = TextField(label="Peso (kg):", width=290)
-
+    
     
     def on_find_percentile_click(e):
         #nonlocal result_text  # Declare result_text as nonlocal
@@ -102,7 +100,12 @@ def main(page: Page):
         else:
             result_text.value = f'El bebé se encuentra en el percentil 3 de peso para su edad.'
         page.update()
-        
+    
+    lista = Dropdown(hint_text="Cual es el sexo?",
+        width= 200, on_change=sexo, options=[
+        dropdown.Option('Girl'),
+        dropdown.Option('Boy'),
+    ])    
     boton = ElevatedButton(text="Encontrar percentil", on_click=on_find_percentile_click)
     result_text = Text(value="")
     
