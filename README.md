@@ -1,2 +1,4 @@
-## Coming soon!
+## Installation
+Clone the repository:
+
 <br>
