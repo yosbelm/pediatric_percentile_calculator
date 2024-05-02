@@ -16,8 +16,8 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
-### Contributing
-# Contributions are welcome! Fork the repository and submit a pull request.
+# Contributing
+### Contributions are welcome! Fork the repository and submit a pull request.
 
-### License
-# This project is licensed under the MIT License.
+# License
+### This project is licensed under the MIT License.
