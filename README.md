@@ -1,4 +1,23 @@
-## Installation
-Clone the repository:
+# Getting Started with Pediatric Percentile Calculator
 
-<br>
+## Installation
+
+### 1. Clone the repository
+```
+git clone https://github.com/your-username/pediatric_percentile_calculator.git`
+```
+### 2. Install dependencies
+```
+cd pediatric_percentile_calculator
+pip install -r requirements.txt
+```
+
+### 3. Run the application
+```
+python main.py
+```
+### Contributing
+# Contributions are welcome! Fork the repository and submit a pull request.
+
+### License
+# This project is licensed under the MIT License.
