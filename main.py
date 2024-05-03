@@ -1,5 +1,5 @@
 import flet
-from flet import Text, TextField, ElevatedButton, Page, Dropdown, dropdown, ControlEvent
+from flet import Text, TextField, ElevatedButton, Page, Dropdown, dropdown, ControlEvent, CupertinoAlertDialog, CupertinoDialogAction, TextStyle, TextThemeStyle, CupertinoFilledButton
 from tabla import tabla_peso_edad_boys, tabla_peso_edad_girls, tabla_talla_edad_boys, tabla_talla_edad_girls
     
 class PercentileFinder:
@@ -75,7 +75,29 @@ def main(page: Page):
     def on_button_click(e):
         on_find_percentile_edad_peso_click(e)
         on_find_percentile_edad_talla_click(e)
+        open_cupertino_dialog(e)
     
+    def close_cupertino_dialog(e):
+        cupertino_alert_dialog.open = False
+        page.update()
+    
+    def open_cupertino_dialog(e):
+        cupertino_alert_dialog.content.value = f'{result_text.value}\n{texto_2.value}'
+        page.dialog = cupertino_alert_dialog
+        cupertino_alert_dialog.open = True
+        page.update()
+    
+    cupertino_alert_dialog = CupertinoAlertDialog(
+        title=Text("Resultados", text_align='center'),
+        content=Text(value="", style=TextThemeStyle.BODY_MEDIUM),
+        actions=[
+            CupertinoDialogAction(
+                "OK",
+                text_style=TextStyle(italic=True),
+                on_click=close_cupertino_dialog
+            ),
+        ]
+    )
     edad_input = TextField(label="Edad (meses):", width=290)
     peso_input = TextField(label="Peso (kg):", width=290)
     talla_input = TextField(label="Talla (cm):", width=290)
@@ -84,7 +106,12 @@ def main(page: Page):
         width= 200, on_change=sexo, options=[
         dropdown.Option('Girl'),
         dropdown.Option('Boy'),])    
-    boton = ElevatedButton(text="Encontrar percentil", on_click=(on_button_click))
+    boton = CupertinoFilledButton(
+            content=Text("Calcular"),
+            opacity_on_click=0.3,
+            on_click=on_button_click,
+            width=185
+        )
     result_text = Text(value="")
     texto_2 = Text(value="")
     
@@ -93,7 +120,6 @@ def main(page: Page):
         peso_input,
         talla_input, 
         boton, 
-        result_text,
-        texto_2)
+        )
 
 flet.app(target= main)
