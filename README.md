@@ -1,7 +1,7 @@
 # Getting Started with Pediatric Percentile Calculator
 <div align="center">
   <img width="600" src="assets/Screenshot_1.png" alt="App">
-  <img width="600" src="assets/Screenshot_2.png" alt="App">
+  
  
 ## Installation
 
