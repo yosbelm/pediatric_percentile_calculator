@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: center; align = "center"; height: 100vh;">
+<div style="display: flex; justify-content: center; height: 100vh;">
   <img src="assets/Screenshot 1.png" alt="Screenshot 1" style="width: 45%;">
   <img src="assets/Screenshot 2.png" alt="Screenshot 2" style="width: 45%;">
 </div>
