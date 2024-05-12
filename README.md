@@ -12,9 +12,9 @@ This code is a calculator for pediatric percentiles, specifically for the weight
 2. The age input can be in months or years, but it must be consistent (i.e. all months or all years).
 3. The height and weight inputs must be in centimeters and kilograms, respectively (this feature may be updated in the future).
 
-## 📜⬇️ Installation Guide
+## 📜 Installation Guide
 
-### 1. Clone the repository
+### 1. ⬇️ Clone the repository
 ```
 git clone https://github.com/menendev/pediatric_percentile_calculator.git
 ```
