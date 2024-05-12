@@ -9,7 +9,7 @@
 This code is a calculator for pediatric percentiles, specifically for the weight-for-age, height-for-age, and weight-for-height percentiles. It takes in the child's sex, age (in months or years), height, and weight as inputs and returns the corresponding percentile values.
 
 
-## 📜 ⬇️ Installation Guide
+## 📜⬇️ Installation Guide
 
 ### 1. Clone the repository
 ```
@@ -21,7 +21,7 @@ cd pediatric_percentile_calculator
 pip install -r requirements.txt
 ```
 
-### 3. Run the application
+### 3. 🚀 Run the application
 ```
 python main.py
 ```
