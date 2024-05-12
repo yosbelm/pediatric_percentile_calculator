@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; align='center';">
   <img src="assets/Screenshot 1.png" alt="Screenshot 1" style="width: 45%;">
   <img src="assets/Screenshot 2.png" alt="Screenshot 2" style="width: 45%;">
 </div>
