@@ -3,9 +3,11 @@
   <img src="assets/Screenshot 2.png" alt="Screenshot 1.png" style="width: 45%; margin: 0 10px;">
 </div>
 
- ## Features
- This code is a calculator for pediatric percentiles, specifically for the weight-for-age, height-for-age, and weight-for-height percentiles. It takes in the child's sex, age (in months or years), height, and weight as inputs and returns the corresponding percentile values.
 # Getting Started with Pediatric Percentile Calculator
+ 
+## Features
+This code is a calculator for pediatric percentiles, specifically for the weight-for-age, height-for-age, and weight-for-height percentiles. It takes in the child's sex, age (in months or years), height, and weight as inputs and returns the corresponding percentile values.
+
 
 ## Installation
 
