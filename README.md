@@ -8,11 +8,9 @@
 ## 🌃 Features
 This code is a calculator for pediatric percentiles, specifically for the weight-for-age, height-for-age, and weight-for-height percentiles. It takes in the child's sex, age (in months or years), height, and weight as inputs and returns the corresponding percentile values.
 ## 🪶 Notes
-1.The calculator uses the WHO child growth standards to calculate the percentiles.
-
-2.The age input can be in months or years, but it must be consistent (i.e. all months or all years).
-
-3.The height and weight inputs must be in centimeters and kilograms, respectively.
+1. The calculator uses the WHO child growth standards to calculate the percentiles.
+2. The age input can be in months or years, but it must be consistent (i.e. all months or all years).
+3. The height and weight inputs must be in centimeters and kilograms, respectively.
 
 ## 📜⬇️ Installation Guide
 
