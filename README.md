@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="600" src="assets/Screenshot_1.png" alt="App">
+  <img width="600" src="assets/Screenshot 1.png" alt="App">
   
 # Getting Started with Pediatric Percentile Calculator
 
