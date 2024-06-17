@@ -48,19 +48,19 @@ class PercentileFindertallapeso:
                 return 97
             
 def main(page: Page):
-    page.title = "Cálculo de percentiles pediátricos"
+    page.title = "Pediatric percentile calculator"
     page.vertical_alignment = flet.MainAxisAlignment.CENTER
     page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
     page.window_width = 390
     page.window_height = 644
     
     def edad(e: ControlEvent):
-        if edad_dropdown.value == "Meses":
+        if edad_dropdown.value == "Months":
             pf.tabla_percentiles = tabla_peso_edad_boys
             pf.tabla_percentiles = tabla_peso_edad_girls
             pt.tabla_percentiles_talla = tabla_talla_edad_boys  
             pt.tabla_percentiles_talla = tabla_talla_edad_girls    
-        elif edad_dropdown.value == "Años":
+        elif edad_dropdown.value == "Years":
             pf.tabla_percentiles = tabla_peso_edad_boys_years
             pf.tabla_percentiles = tabla_peso_edad_girls_years
             pt.tabla_percentiles_talla = tabla_talla_edad_boys_years
@@ -89,17 +89,17 @@ def main(page: Page):
         percentil_anterior = pf.percentiles[pf.percentiles.index(percentil) - 1] if percentil!= 3 else None
 
         if percentil_anterior == None:
-            if lista.value == "Girl" and edad_dropdown.value == "Meses":
-                result_text.value = f'P/E: La bebé se encuentra en el percentil 3 de peso para su edad.'
-            elif lista.value == "Girl" and edad_dropdown.value == "Años":
-                result_text.value = f'P/E: La niña se encuentra en el percentil 3 de peso para su edad.'
+            if lista.value == "Girl" and edad_dropdown.value == "Months":
+                result_text.value = f'W/A: The baby is in the 3rd percentile for weight for her age.'
+            elif lista.value == "Girl" and edad_dropdown.value == "Years":
+                result_text.value = f'W/A: The girl is in the 3rd percentile for weight for her age.'
               
-            elif  lista.value == "Boy" and edad_dropdown.value == "Meses":
-                result_text.value = f'P/E: El bebé se encuentra en el percentil 3 de peso para su edad.'
-            elif  lista.value == "Boy" and edad_dropdown.value == "Años":
-                result_text.value = f'P/E: El niño se encuentra en el percentil 3 de peso para su edad.'
+            elif  lista.value == "Boy" and edad_dropdown.value == "Months":
+                result_text.value = f'W/A: The baby is in the 3rd percentile for weight for her age.'
+            elif  lista.value == "Boy" and edad_dropdown.value == "Years":
+                result_text.value = f'W/A: The boy is in the 3rd percentile for weight for her age.'
         elif percentil_anterior != '':
-            result_text.value = f'P/E: {percentil_anterior}-{percentil}'
+            result_text.value = f'W/A: {percentil_anterior}-{percentil}'
         page.update()
     
     def on_find_percentile_edad_talla_click(e):
@@ -110,16 +110,16 @@ def main(page: Page):
 
         if percentil_anterior == None:
             if lista.value == "Girl" and edad_dropdown.value == "Meses":
-                texto_2.value = f'T/E: La bebé se encuentra en el percentil 3 de talla para su edad.'
-            elif lista.value =="Girl" and edad_dropdown.value == "Años":
-                texto_2.value = f'T/E: La niña se encuentra en el percentil 3 de talla para su edad.' 
+                texto_2.value = f'H/A The baby is in the 3rd percentile for height for her age.'
+            elif lista.value =="Girl" and edad_dropdown.value == "Years":
+                texto_2.value = f'H/A: The girl is in the 3rd percentile for height for her age.' 
             
             elif  lista.value == "Boy" and edad_dropdown.value == "Meses":
-                texto_2.value = f'T/E: El bebé se encuentra en el percentil 3 de talla para su edad.'
-            elif lista.value =="Boy" and edad_dropdown.value == "Años":
-                texto_2.value = f'T/E: El niño se encuentra en el percentil 3 de talla para su edad.'
+                texto_2.value = f'H/A: The baby is in the 3rd percentile for height for her age.'
+            elif lista.value =="Boy" and edad_dropdown.value == "Years":
+                texto_2.value = f'H/A: The boy is in the 3rd percentile for height for her age.'
         elif percentil_anterior != '':
-            texto_2.value = f'T/E: {percentil_anterior}-{percentil}'
+            texto_2.value = f'H/A: {percentil_anterior}-{percentil}'
         page.update()
     
     def on_find_percentile_talla_peso_click(e):
@@ -129,17 +129,17 @@ def main(page: Page):
         percentil_anterior = pf.percentiles[ptp.percentiles.index(percentil) - 1] if percentil!= 3 else None
 
         if percentil_anterior == None:
-            if lista.value == "Girl" and edad_dropdown.value == "Meses":
-                texto_3.value = f'T P/T: La bebé se encuentra en el percentil 3 de peso para su talla.'
-            elif lista.value =="Girl" and edad_dropdown.value == "Años":
-                texto_3.value = f'P/T: La niña se encuentra en el percentil 3 de peso para su talla.'
+            if lista.value == "Girl" and edad_dropdown.value == "Months":
+                texto_3.value = f'W/H: The baby is in the 3rd percentile for weight for her height.'
+            elif lista.value =="Girl" and edad_dropdown.value == "Years":
+                texto_3.value = f'W/H: The girl is in the 3rd percentile for weight for her height.'
                 
-            elif  lista.value == "Boy" and edad_dropdown.value == "Meses":
-                texto_3.value = f'P/T: El bebé se encuentra en el percentil 3 de peso para su talla.'
-            elif lista.value =="Boy" and edad_dropdown.value == "Años":
-                texto_3.value = f'P/T: El niño se encuentra en el percentil 3 de peso para su talla.'
+            elif  lista.value == "Boy" and edad_dropdown.value == "Months":
+                texto_3.value = f'W/H: The baby is in the 3rd percentile for weight for her height.'
+            elif lista.value =="Boy" and edad_dropdown.value == "Years":
+                texto_3.value = f'W/H: The boy is in the 3rd percentile for weight for her height.'
         elif percentil_anterior != '':
-            texto_3.value = f'P/T: {percentil_anterior}-{percentil}'
+            texto_3.value = f'W/H: {percentil_anterior}-{percentil}'
         page.update()
     
     def on_button_click(e):
@@ -159,7 +159,7 @@ def main(page: Page):
         page.update()
     
     cupertino_alert_dialog = CupertinoAlertDialog(
-        title=Text("Resultados", text_align='center'),
+        title=Text("Results", text_align='center'),
         content=Text(value="", style=TextThemeStyle.BODY_MEDIUM),
         actions=[
             CupertinoDialogAction(
@@ -169,24 +169,24 @@ def main(page: Page):
             ),
         ]
     )
-    edad_input = TextField(label="Edad (meses o años):", width=290, keyboard_type= KeyboardType.NUMBER)
-    peso_input = TextField(label="Peso (kg):", width=290, keyboard_type= KeyboardType.NUMBER)
-    talla_input = TextField(label="Talla (cm):", width=290, keyboard_type= KeyboardType.NUMBER)
+    edad_input = TextField(label="Age (month or years):", width=290, keyboard_type= KeyboardType.NUMBER)
+    peso_input = TextField(label="Weight (kg):", width=290, keyboard_type= KeyboardType.NUMBER)
+    talla_input = TextField(label="Height (cm):", width=290, keyboard_type= KeyboardType.NUMBER)
     
-    lista = Dropdown(hint_text="¿Cual es el sexo?",
+    lista = Dropdown(hint_text="What is the gender?",
         width= 200, on_change=sexo, options=[
         dropdown.Option('Girl'),
         dropdown.Option('Boy'),]) 
-    edad_dropdown = Dropdown(hint_text="Elija",
+    edad_dropdown = Dropdown(hint_text="Choose",
         width= 100, on_change=edad, options=[
-        dropdown.Option('Meses'),
-        dropdown.Option('Años'),]
+        dropdown.Option('Months'),
+        dropdown.Option('Years'),]
     )   
     boton = CupertinoFilledButton(
-            content=Text("Calcular"),
+            content=Text("Calculate"),
             opacity_on_click=0.3,
             on_click=on_button_click,
-            width=185
+            width=200
         )
     result_text = Text(value="")
     texto_2 = Text(value="")
