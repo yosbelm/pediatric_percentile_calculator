@@ -95,9 +95,9 @@ def main(page: Page):
                 result_text.value = f'W/A: The girl is in the 3rd percentile for weight for her age.'
               
             elif  lista.value == "Boy" and edad_dropdown.value == "Months":
-                result_text.value = f'W/A: The baby is in the 3rd percentile for weight for her age.'
+                result_text.value = f'W/A: The baby is in the 3rd percentile for weight for his age.'
             elif  lista.value == "Boy" and edad_dropdown.value == "Years":
-                result_text.value = f'W/A: The boy is in the 3rd percentile for weight for her age.'
+                result_text.value = f'W/A: The boy is in the 3rd percentile for weight for his age.'
         elif percentil_anterior != '':
             result_text.value = f'W/A: {percentil_anterior}-{percentil}'
         page.update()
@@ -109,15 +109,15 @@ def main(page: Page):
         percentil_anterior = pt.percentiles[pt.percentiles.index(percentil) - 1] if percentil!= 3 else None
 
         if percentil_anterior == None:
-            if lista.value == "Girl" and edad_dropdown.value == "Meses":
+            if lista.value == "Girl" and edad_dropdown.value == "Months":
                 texto_2.value = f'H/A The baby is in the 3rd percentile for height for her age.'
             elif lista.value =="Girl" and edad_dropdown.value == "Years":
                 texto_2.value = f'H/A: The girl is in the 3rd percentile for height for her age.' 
             
-            elif  lista.value == "Boy" and edad_dropdown.value == "Meses":
-                texto_2.value = f'H/A: The baby is in the 3rd percentile for height for her age.'
+            elif  lista.value == "Boy" and edad_dropdown.value == "Months":
+                texto_2.value = f'H/A: The baby is in the 3rd percentile for height for his age.'
             elif lista.value =="Boy" and edad_dropdown.value == "Years":
-                texto_2.value = f'H/A: The boy is in the 3rd percentile for height for her age.'
+                texto_2.value = f'H/A: The boy is in the 3rd percentile for height for his age.'
         elif percentil_anterior != '':
             texto_2.value = f'H/A: {percentil_anterior}-{percentil}'
         page.update()
@@ -135,9 +135,9 @@ def main(page: Page):
                 texto_3.value = f'W/H: The girl is in the 3rd percentile for weight for her height.'
                 
             elif  lista.value == "Boy" and edad_dropdown.value == "Months":
-                texto_3.value = f'W/H: The baby is in the 3rd percentile for weight for her height.'
+                texto_3.value = f'W/H: The baby is in the 3rd percentile for weight for his height.'
             elif lista.value =="Boy" and edad_dropdown.value == "Years":
-                texto_3.value = f'W/H: The boy is in the 3rd percentile for weight for her height.'
+                texto_3.value = f'W/H: The boy is in the 3rd percentile for weight for his height.'
         elif percentil_anterior != '':
             texto_3.value = f'W/H: {percentil_anterior}-{percentil}'
         page.update()
