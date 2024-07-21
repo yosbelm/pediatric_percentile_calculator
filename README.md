@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw;">
-  <img src="[assets/Screenshot 1.png](https://yosbel.pages.dev/assets/pediatricCalculator-BHg6KPbE.jpeg)" alt="Porfolio pic" style="width: 100%; margin: auto;">
+  <img src="https://yosbel.pages.dev/assets/pediatricCalculator-BHg6KPbE.jpeg" alt="Porfolio pic" style="width: 100%; margin: auto;">
 </div>
 
 # Getting Started with Pediatric Percentile Calculator
